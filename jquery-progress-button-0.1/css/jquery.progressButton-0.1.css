@@ -1,0 +1,82 @@
+/*-------------------------
+	The buttons
+--------------------------*/
+
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot');
+	src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/icomoon.ttf') format('truetype'),
+		url('../fonts/icomoon.woff') format('woff'),
+		url('../fonts/icomoon.svg#icomoon') format('svg');
+}
+
+.progress-button{
+	display: inline-block;
+	overflow: hidden;
+	position:relative;
+}
+
+/*	Hide the original text of the button. Then the loading or finished
+	text will be shown in the :after element above it. */
+
+.progress-button.in-progress,
+.progress-button.finished{
+	color:transparent !important;
+}
+
+.progress-button.in-progress:after,
+.progress-button.finished:after{
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	top: 0;
+	padding-top: inherit;
+	color: #fff !important;
+	left: 0;
+}
+
+/*	If the .in-progress class is set on the button, show the
+	contents of the data-loading attribute on the butotn */
+
+.progress-button.in-progress:after{
+	content:attr(data-loading);
+}
+
+/* The same goes for the .finished class */
+
+.progress-button.finished{
+	background: #428bca url(../img/ok.png) no-repeat center;
+}
+
+/* The colorful bar that grows depending on the progress */
+
+.progress-button .tz-bar{
+	background-color: #36688e;
+	height:3px;
+	bottom:0;
+	left:0;
+	width:0;
+	position:absolute;
+	z-index:1;
+	-webkit-transition: width 1s, height 1s;
+	-moz-transition: width 1s, height 1;
+	transition: width 1s, height 1s;
+}
+
+/* The bar can be either horizontal, or vertical */
+
+.progress-button .tz-bar.background-horizontal{
+	height:100%;
+}
+
+.progress-button .tz-bar.background-vertical{
+	height:0;
+	top:0;
+	width:100%;
+}
+
